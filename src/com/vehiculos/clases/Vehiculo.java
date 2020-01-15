@@ -1,6 +1,8 @@
 package com.vehiculos.clases;
 
-public class Vehiculo implements Comparable<Vehiculo>{
+import com.vehiculos.interfaces.Mobible;
+
+public abstract class Vehiculo implements Comparable<Vehiculo>,Mobible{
 	private String marca;
 	private String modelo;
 	private Double precio;
@@ -34,16 +36,11 @@ public class Vehiculo implements Comparable<Vehiculo>{
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
-
+	
+	
 	@Override
 	public int compareTo(Vehiculo o) {
-		if(o.getPrecio() > this.precio) {
-			return 1;
-		}else if(o.getPrecio() > this.precio) {
-			return 0;
-		}else {
-			return -1;
-		}
+		return o.getPrecio() < this.precio ? -1 : (o.getPrecio() == 0 ? 0 : 1);
 	}
 	
 	

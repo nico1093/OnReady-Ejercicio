@@ -1,6 +1,6 @@
 package com.vehiculos.clases;
 
-public class Auto extends Vehiculo{
+public class Auto extends Vehiculo {
 	private Integer puertas;
 
 	public Auto(String marca, String modelo, Double precio, Integer puertas) {
@@ -16,7 +16,14 @@ public class Auto extends Vehiculo{
 		this.puertas = puertas;
 	}
 	
-	@Override
+	public int velocidadMaxima() {
+		return this.esDeLujo() ? 200 : 150;
+	}
+	
+	public boolean esDeLujo() {
+		return (super.getPrecio() > 225000) && (this.puertas > 3);
+	}
+	
 	public String toString() {
 		return "Marca: " + this.getMarca() + 
 				" // Modelo: " + this.getModelo() +
